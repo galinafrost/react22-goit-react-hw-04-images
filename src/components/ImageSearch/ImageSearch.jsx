@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { Hearts } from 'react-loader-spinner';
 
 import Searchbar from './Searchbar';
@@ -74,12 +74,12 @@ const ImageSearch = () => {
     });
   };
 
-  const closeModal = () => {
+  const closeModal = useCallback(() => {
     setModal({
       modalOpen: false,
       modalContent: null,
     });
-  };
+  }, []);
 
   const { images, isLoading, error } = state;
   const { modalOpen, modalContent } = modal;
