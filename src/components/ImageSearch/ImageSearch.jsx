@@ -53,14 +53,17 @@ const ImageSearch = () => {
     }
   }, [page, search]);
 
-  const changeSearch = ({ search: newSearch }) => {
-    if (search !== newSearch) {
-      setSearch(newSearch);
-      setState(prevState => ({
-        ...prevState,
-        images: [],
-      }));
+  const changeSearch = newSearch => {
+    if (search === newSearch) {
+      return;
     }
+
+    setSearch(newSearch);
+    setPage(1);
+    setState(prevState => ({
+      ...prevState,
+      images: [],
+    }));
   };
 
   const loadMore = () => {

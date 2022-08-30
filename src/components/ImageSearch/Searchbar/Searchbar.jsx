@@ -4,14 +4,11 @@ import PropTypes from 'prop-types';
 import style from './searchbar.module.css';
 
 const Searchbar = ({ onSubmit }) => {
-  const [state, setState] = useState({ search: '' });
+  const [state, setState] = useState('');
 
-  const handleChange = ({ target }) => {
-    const { name, value } = target;
-    setState(prevState => ({
-      ...prevState,
-      [name]: value,
-    }));
+  const handleChange = event => {
+    const { value } = event.target;
+    setState(value);
   };
 
   const reset = () => {
@@ -20,7 +17,7 @@ const Searchbar = ({ onSubmit }) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    onSubmit({ ...state });
+    onSubmit(state);
     reset();
   };
 
@@ -34,7 +31,7 @@ const Searchbar = ({ onSubmit }) => {
 
           <input
             onChange={handleChange}
-            value={state.search}
+            value={state}
             name="search"
             className={style.input}
             type="text"
