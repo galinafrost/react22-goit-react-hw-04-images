@@ -16,11 +16,10 @@ const Searchbar = ({ onSubmit }) => {
   };
 
   const handleSubmit = e => {
+    e.preventDefault();
     if (!state) {
       return;
     }
-
-    e.preventDefault();
     onSubmit(state);
     reset();
   };
